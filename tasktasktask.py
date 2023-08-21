@@ -54,6 +54,7 @@ if circles is not None:
 kernel = np.ones((5,5),np.uint8)
 erosion = cv.erode(contour_image,kernel,iterations = 10)
 
+<<<<<<< HEAD
 # img = cv.resize(erosion,(0,0),None,fx=1,fy=1)
 # img = cv.medianBlur(img,5)
 # cimg = cv.cvtColor(img,cv.COLOR_BGR2RGB)
@@ -68,12 +69,18 @@ erosion = cv.erode(contour_image,kernel,iterations = 10)
 #         # 绘制圆心
 #         cv.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
 
+=======
+>>>>>>> a3593f25414cb5e947caa89b88cffa71cf606215
 ret, thresh = cv.threshold(erosion, 120, 255, 0) #应用二值化阈值灰度图片
 
 # 寻找轮廓
 contours, _ = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
+<<<<<<< HEAD
 area_threshold = 50 # 设置阈值，用于排除小于该面积的轮廓
+=======
+area_threshold = 100 # 设置阈值，用于排除小于该面积的轮廓
+>>>>>>> a3593f25414cb5e947caa89b88cffa71cf606215
 
 for contour in contours:
     area = cv.contourArea(contour)
@@ -85,6 +92,7 @@ for contour in contours:
 
         # 在图像上画出轮廓
         cv.drawContours(erosion, contour, -1, (0, 255, 0), 2)
+<<<<<<< HEAD
         
         # 在指定坐标上输入文字
         text1 = "Volleyball"
@@ -92,6 +100,12 @@ for contour in contours:
         cv.putText(origin_img, text1, (cX, cY), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         cv.putText(origin_img, text2, (cX, cY+50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
         
+=======
+
+        # 在指定坐标上输入文字
+        text = "Volleyball"
+        cv.putText(origin_img, text, (cX, cY), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+>>>>>>> a3593f25414cb5e947caa89b88cffa71cf606215
 
 cv.imshow('detected circles',cimg)
 cv.imshow('contour_image',contour_image)
